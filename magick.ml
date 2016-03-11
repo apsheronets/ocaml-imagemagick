@@ -1794,6 +1794,9 @@ let append_images img_list ~stack =
   _img
 ;;
 
+external reset_page : image_handle -> string -> unit =
+  "imper_resetimagepage"
+
 end;; (* of module Imper }}} *)
 
 

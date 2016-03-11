@@ -584,6 +584,8 @@ module Imper :
     type stack = Left_to_right | Top_to_bottom
     val stack_dir_of_string : stack:string -> stack
     val append_images : image_list_handle -> stack:stack -> image_handle
+    external reset_page : image_handle -> string -> unit
+      = "imper_resetimagepage"
   end
 module Fun :
   sig

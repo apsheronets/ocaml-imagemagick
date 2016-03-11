@@ -4973,5 +4973,30 @@ fun_negateimagechannel(
 }
 /* }}} */
 
+/* {{{ imper_resetimagepage()
+ *
+ * MagickBooleanType ResetImagePage(Image *image,const char *page)
+ */
+CAMLprim value imper_resetimagepage(
+        value image_bloc,
+        value page)
+{
+
+    CAMLparam2(image_bloc, page) ;
+
+    MagickBooleanType
+        ret ;
+
+    ret = ResetImagePage(
+            (Image *) Field(image_bloc,1),
+            String_val(page)) ;
+
+    if (ret == MagickFalse) {
+        failwith("resetimagepage failed") ;
+    }
+
+    CAMLreturn (Val_unit) ;
+}
+
 /* vim: sw=4 ts=4 sts=4 et fdm=marker
  */
