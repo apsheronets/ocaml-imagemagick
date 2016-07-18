@@ -3853,16 +3853,15 @@ imper_draw_polygon_native(
             Double_val(ty) );
     draw_info->affine = affine;
 
-
-    char str_buffer[ MaxTextExtent ];
-    char str_buffer_tmp[ MaxTextExtent ];
+    char str_buffer[ array_len * 11 ];
+    char str_buffer_tmp[ array_len * 11 ];
     int str_len;
     value coords;
 
     /*
      * Feed the primitive "polygon  x0,y0  ...  xn,yn"
      */
-    str_len = snprintf( str_buffer, MaxTextExtent, "polygon" );
+    str_len = snprintf( str_buffer, array_len * 11, "polygon" );
 
     for (i=0; i < array_len; i++) {
 
@@ -3870,7 +3869,7 @@ imper_draw_polygon_native(
 
         strcpy( str_buffer_tmp, str_buffer );
 
-        str_len = snprintf( str_buffer, MaxTextExtent, "%s %ld,%ld",
+        str_len = snprintf( str_buffer, array_len * 11, "%s %ld,%ld",
                     str_buffer_tmp,
                     Long_val(Field(coords,0)),
                     Long_val(Field(coords,1)) );
